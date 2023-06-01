@@ -1,0 +1,167 @@
+// console.log(fieldArr)
+    // console.log(dictionaryArr)
+    // fieldArr.forEach(async (item, i) => {
+    //   console.log(item)
+    //   if (item[DICTSOURCE] != '' && item[DICTSOURCE] != undefined) {
+    //     console.log(i)
+    //     let data = data_dict
+    //     data.name = item[FIELDNAME]
+    //     data.code = item[FIELDCODE]
+    //     data.fieldSize = item[FIELDLENGTH] - 0
+    //     data.tableId = TABLEID
+
+    //     fieldTypeList.forEach(item1 => {
+    //       if (item1.fieldType_zh_CN == item[FIELDTYPE]) {
+    //         data.fieldType = item1.fieldType
+    //       }
+    //     })
+
+    //     whetherList.forEach(item2 => {
+    //       if (item2.whether_zh_CN == item[REQUIRED]) {
+    //         data.fieldProperty.required = item2.whether
+    //         data.fieldPropertyDTOList[0].value = item2.whether
+    //       }
+    //       if (item2.whether_zh_CN == item[UNIQUE]) {
+    //         data.fieldProperty.unique = item2.whether
+    //         data.fieldPropertyDTOList[1].value = item2.whether
+    //       }
+    //     })
+
+    //     data_dictionary.name = item[FIELDNAME]
+    //     data_dictionary.code = item[TABLECODE]
+    //     data_dictionary.items = []
+    //     dictionaryArr.forEach(item3 => {
+    //       if (item3[FIELDNAME] == data_dictionary.name) {
+    //         data_dictionary.items.push({
+    //           "code": item3[FIELDLENGTH],
+    //           "name": item3[FIELDTYPE],
+    //           "renderBgColor": "#fff",
+    //           "renderFontColor": "#000"
+    //         })
+    //       }
+    //     })
+
+    //     let dictionary_name_arr = []
+    //     let { name } = data_dictionary
+
+    //     let nameArr = name.split('')
+    //     let nameArr_zh_CN = []
+    //     nameArr.forEach((item, i) => {
+    //       if (isNaN(+item)) {
+    //         nameArr_zh_CN.push(item)
+    //       }
+    //     })
+    //     // console.log(data)
+    //     let nameStr = nameArr_zh_CN.join('')
+    //     let reg = new RegExp(nameStr)
+    //     // console.log(reg)
+    //     // let res = await get_dictionary_list()
+    //     let res = await get_one_dictionary(nameStr)
+    //     console.log(res)
+    //     dictionary_name_arr = res.data.map(item => {
+    //       return {
+    //         id: item.id,
+    //         name: item.name,
+    //         code: item.code
+    //       }
+    //     })
+
+    //     // console.log(dictionary_name_arr)
+    //     let dictId
+    //     let is_dictionary = dictionary_name_arr.some((item, i) => {
+    //       console.log(reg)
+    //       console.log(item.name)
+    //       console.log(reg.test(item.name))
+    //       if (reg.test(item.name)) {
+    //         console.log('执行关联字典')
+    //         dictId = item.id
+    //         console.log(item.name)
+    //         console.log(dictId)
+    //         relevance_dictionary(dictId).then(async res => {
+    //           data.dicValues = res.data.result.items
+    //           data.dictionaryForeign.refTableCode = res.data.result.code
+    //           data.dicDto.id = dictId
+    //           data.dicDto.name = res.data.result.name
+    //           data.dicDto.code = res.data.result.code
+    //           console.log('字典名称', data.dicDto.name)
+    //           await add_field(data)
+    //           console.log(data)
+
+    //         })
+
+
+    //         return true
+
+    //       }
+
+    //     })
+    //     console.log('is_dictionary', is_dictionary)
+    //     if (!is_dictionary) {
+    //       console.log('执行创建字典')
+    //       let res1 = await create_dictionary(data_dictionary)
+    //       dictId = res1.data.result
+    //       data.dicDto.id = dictId
+
+    //       let res2 = await relevance_dictionary(dictId)
+    //       data.dicValues = res2.data.result.items
+    //       data.dictionaryForeign.refTableCode = res2.data.result.code
+    //       data.dicDto.name = res2.data.result.name
+    //       await add_field(data)
+
+    //     }
+    //     // console.log(is_dictionary)
+    //     // console.log(dictId)
+    //     // if (is_dictionary) {
+
+    //     //   const res = await relevance_dictionary(dictId)
+    //     //   data.dicValues = res.data.result.items
+    //     //   data.dictionaryForeign.refTableCode = res.data.result.code
+    //     //   data.dicDto.id = dictId
+    //     //   data.dicDto.name = res.data.result.name
+    //     //   console.log('字典名称', data.dicDto.name)
+    //     // } else  {
+
+    //     //   let res1 = await create_dictionary(data_dictionary)
+    //     //   dictId = res1.data.result
+    //     //   data.dicDto.id = dictId
+
+    //     //   let res2 = await relevance_dictionary(dictId)
+    //     //   data.dicValues = res2.data.result.items
+    //     //   data.dictionaryForeign.refTableCode = res2.data.result.code
+    //     //   data.dicDto.name = res2.data.result.name
+    //     // }
+    //     // data.dicDto.id = dictId ? dictId : DICTID
+    //     // data.dicDto.name = item[FIELDNAME]
+    //     // data.dicDto.code = 'dict_' + item[DICTSOURCE]
+
+    //     // await add_field(data)
+    //     // console.log(data)
+
+    //   } else {
+    //     let data = data_normal
+    //     data.name = item[FIELDNAME]
+    //     data.code = item[FIELDCODE]
+    //     data.fieldSize = item[FIELDLENGTH]
+    //     data.tableId = TABLEID
+
+    //     fieldTypeList.forEach(item1 => {
+    //       if (item1.fieldType_zh_CN == item[FIELDTYPE]) {
+    //         data.fieldType = item1.fieldType
+    //       }
+    //     })
+
+    //     whetherList.forEach(item2 => {
+    //       if (item2.whether_zh_CN == item[REQUIRED]) {
+    //         data.fieldProperty.required = item2.whether
+    //         data.fieldPropertyDTOList[0].value = item2.whether
+    //       }
+    //       if (item2.whether_zh_CN == item[UNIQUE]) {
+    //         data.fieldProperty.unique = item2.whether
+    //         data.fieldPropertyDTOList[1].value = item2.whether
+    //       }
+    //     })
+
+    //     await add_field(data)
+    //     console.log(data)
+    //   }
+    // })

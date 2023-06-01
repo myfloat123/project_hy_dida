@@ -1,0 +1,84 @@
+{
+  "dataType": "DICT",
+  "fieldType": "STRING",
+  "name": "性别",
+  "code": "sex",
+  "fieldProperty": {
+    "required": "false",
+    "unique": "false",
+    "pinyinConvent": "false",
+    "regular": "",
+    "defaults": null
+  },
+  "tags": null,
+  "fieldSize": 32,
+  "decimalSize": null,
+  "species": "BIS",
+  "tableId": "1659989626624028672",
+  "dictionaryForeign": {
+    "refTableCode": "dict_xingbie",
+    "refFieldCode": "code",
+    "refDisplayFieldCode": "name"
+  },
+  "dicDto": {
+    "id": "1427549846180605952",
+    "name": "性别",
+    "code": "dict_xingbie"
+  },
+  "dicValues": [
+    {
+      "id": "1427549846683922432",
+      "createdBy": "1295915065878388737",
+      "gmtCreate": 1629189380000,
+      "modifiedBy": "1295915065878388737",
+      "gmtModified": 1629189380000,
+      "code": "0",
+      "name": "女",
+      "pid": null,
+      "renderBgColor": "#fff",
+      "renderFontColor": "#000",
+      "sort": "1",
+      "level": 1,
+      "path": null,
+      "hasChild": null
+    },
+    {
+      "id": "1427549846683922433",
+      "createdBy": "1295915065878388737",
+      "gmtCreate": 1629189380000,
+      "modifiedBy": "1295915065878388737",
+      "gmtModified": 1629189380000,
+      "code": "1",
+      "name": "男",
+      "pid": null,
+      "renderBgColor": "#fff",
+      "renderFontColor": "#000",
+      "sort": "1",
+      "level": 1,
+      "path": null,
+      "hasChild": null
+    }
+  ],
+  "fieldPropertyDTOList": [
+    {
+      "value": "false",
+      "code": "required"
+    },
+    {
+      "value": "false",
+      "code": "unique"
+    },
+    {
+      "value": "false",
+      "code": "pinyinConvent"
+    },
+    {
+      "value": "",
+      "code": "regular"
+    },
+    {
+      "value": null,
+      "code": "defaults"
+    }
+  ]
+}

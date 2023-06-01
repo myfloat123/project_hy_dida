@@ -1,0 +1,57 @@
+获取模块列表
+接口
+http://training-dida.haoyuntech.com/hy-paas/paas/hy/20014/page/v1/menus/list
+
+请求方法
+get
+
+响应
+{
+code: "00000",
+msg: "请求处理成功",
+result: [{id: "1655894822663368704", createdBy: "1630538547360575491", gmtCreate: 1683631065418,…},…}]
+timestamp: "1684774839364"
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+建表
+
+接口
+http://training-dida.haoyuntech.com/hy-paas/paas/hy/20014/data/v2/tables/
+
+请求方法
+post
+
+载荷
+{"name":"测试学生信息表1","code":"test_stu_info_1","type":"TABLE","moduleId":"1636566178069622784","description":"","species":"BIS"}
+
+响应
+{code: "00000", msg: "请求处理成功", timestamp: "1684774854073", result: "1660692219675422720"}
+-----------------------------------------------------------------------------------------------------------------------------------
+
+新增字典
+
+接口
+http://training-dida.haoyuntech.com/hy-paas/paas/hy/20014/data/v1/dictionary/
+
+请求方法
+post
+
+载荷
+{
+code: "xingbie1"
+description: ""
+items: [{code: "0", name: "女", renderBgColor: "#fff", renderFontColor: "#000"},…]
+0: {code: "0", name: "女", renderBgColor: "#fff", renderFontColor: "#000"}
+1: {code: "1", name: "男", renderBgColor: "#fff", renderFontColor: "#000"}
+name: "性别1"
+}
+
+响应
+{
+code: "00000"
+msg: "请求处理成功"
+result: "1660701098463342592"
+timestamp: "1684776971082"
+}

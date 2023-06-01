@@ -1,0 +1,51 @@
+{
+  "dataType": "FK",
+  "fieldType": "STRING",
+  "name": "班级编号1",
+  "code": "banjibianhao1",
+  "fieldProperty": {
+    "required": "false",
+    "unique": "false",
+    "pinyinConvent": "false",
+    "regular": "",
+    "defaults": null
+  },
+  "tags": null,
+  "fieldSize": 32,
+  "decimalSize": 0,
+  "species": "BIS",
+  "tableId": "1659989626624028672",
+  "foreignKeyConfig": {
+    "fieldCode": "banjibianhao1",
+    "refTableCode": "class_info",
+    "refFieldCode": "class_code",
+    "refFieldId": "1636566473331847168",
+    "refDisplayFieldCode": "class_code",
+    "refDisplayFieldId": "1636566473331847168",
+    "deleteStrategy": "NO_ACTION",
+    "updateStrategy": "NO_ACTION",
+    "refTableId": "1636566384794284032"
+  },
+  "fieldPropertyDTOList": [
+    {
+      "value": "false",
+      "code": "required"
+    },
+    {
+      "value": "false",
+      "code": "unique"
+    },
+    {
+      "value": "false",
+      "code": "pinyinConvent"
+    },
+    {
+      "value": "",
+      "code": "regular"
+    },
+    {
+      "value": null,
+      "code": "defaults"
+    }
+  ]
+}

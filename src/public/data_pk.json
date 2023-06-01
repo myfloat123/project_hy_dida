@@ -1,0 +1,40 @@
+{
+  "dataType": "PK",
+  "fieldType": "STRING",
+  "name": "学号1",
+  "code": "xuehao1",
+  "fieldProperty": {
+    "required": "false",
+    "unique": "false",
+    "pinyinConvent": "false",
+    "regular": "",
+    "defaults": null
+  },
+  "tags": null,
+  "fieldSize": 32,
+  "decimalSize": null,
+  "species": "BIS",
+  "tableId": "1659989626624028672",
+  "fieldPropertyDTOList": [
+    {
+      "value": "false",
+      "code": "required"
+    },
+    {
+      "value": "false",
+      "code": "unique"
+    },
+    {
+      "value": "false",
+      "code": "pinyinConvent"
+    },
+    {
+      "value": "",
+      "code": "regular"
+    },
+    {
+      "value": null,
+      "code": "defaults"
+    }
+  ]
+}

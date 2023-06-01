@@ -1,0 +1,49 @@
+{
+  "dataType": "QUOTE",
+  "fieldType": "STRING",
+  "name": "班级名称",
+  "code": "class_name",
+  "fieldProperty": {
+    "required": "false",
+    "unique": "false",
+    "pinyinConvent": "false",
+    "regular": "",
+    "defaults": null
+  },
+  "tags": null,
+  "fieldSize": 32,
+  "decimalSize": null,
+  "species": "BIS",
+  "tableId": "1660960008436854784",
+  "referenceConfig": {
+    "fieldCode": "class_name",
+    "refTableCode": "class_info",
+    "refFieldCode": "class_code",
+    "refFieldId": "1636566473331847168",
+    "refDisplayFieldCode": "class_name",
+    "refDisplayFieldId": "1636566541308932096",
+    "refTableId": "1636566384794284032"
+  },
+  "fieldPropertyDTOList": [
+    {
+      "value": "false",
+      "code": "required"
+    },
+    {
+      "value": "false",
+      "code": "unique"
+    },
+    {
+      "value": "false",
+      "code": "pinyinConvent"
+    },
+    {
+      "value": "",
+      "code": "regular"
+    },
+    {
+      "value": null,
+      "code": "defaults"
+    }
+  ]
+}
