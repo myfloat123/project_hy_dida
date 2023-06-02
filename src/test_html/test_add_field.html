@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/axios/1.4.0/axios.min.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+  let http = axios.create({
+    baseURL: 'http://training-dida.haoyuntech.com',
+    // baseURL: 'http://192.168.13.11:6090'
+  })
+  let data = {
+    "dataType": "NORMAL",
+    "fieldType": "DATE",
+    "name": "售后结束时间",
+    "code": "after_sale_end_time",
+    "fieldProperty": {
+      "required": "false",
+      "unique": "false",
+      "pinyinConvent": "false",
+      "regular": "",
+      "defaults": null
+    },
+    "tags": null,
+    "fieldSize": 0,
+    "decimalSize": null,
+    "species": "BIS",
+    "tableId": "1664296984988758016",
+    "fieldPropertyDTOList": [
+      {
+        "value": "false",
+        "code": "required"
+      },
+      {
+        "value": "false",
+        "code": "unique"
+      },
+      {
+        "value": "false",
+        "code": "pinyinConvent"
+      },
+      {
+        "value": "",
+        "code": "regular"
+      },
+      {
+        "value": null,
+        "code": "defaults"
+      }
+    ]
+  }
+
+  const add_field = (data) => http({
+    url: `/hy-paas/paas/hy/20014/data/v2/fields/`,
+    method: 'post',
+    data,
+    headers: {
+      Authorization: 'Bearer ' + 'paas.sys.4.94bf3e88-5886-4d60-9508-9da41a590b00'
+    }
+  }).then(res => {
+    console.log(res)
+    return res
+  }).catch(err => {
+    console.log(err)
+    return err
+  })
+
+  // add_field(data)
+
+  const exec = async () => {
+    let res = await add_field(data)
+    console.log(res)
+  }
+  exec()
+</script>

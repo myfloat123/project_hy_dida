@@ -1,0 +1,8 @@
+Visual Studio Code下载地址
+https://code.visualstudio.com/download
+
+Node.js下载地址
+https://nodejs.org/en
+
+git下载地址
+https://git-scm.com/download/win

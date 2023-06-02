@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/axios/1.4.0/axios.min.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+  let http = axios.create({
+    baseURL: 'http://training-dida.haoyuntech.com',
+    // baseURL: 'http://192.168.13.11:6090'
+  })
+  const get_quote_table_list = () => http({
+    url: `/hy-paas/paas/hy/20014/data/v2/tables/list?excludeTableTypes=DICT`,
+    method: 'get',
+    headers: {
+      Authorization: 'Bearer ' + 'paas.sys.4.94bf3e88-5886-4d60-9508-9da41a590b00'
+    }
+  }).then(res => {
+    if (res.data.code === '00000') {
+
+      console.log('获取引用表列表成功')
+      // console.log(res.data.result.data)
+      return res.data.result.data
+    } else {
+      console.log(res.data.msg)
+      return res.data.msg
+    }
+  }).catch(err => {
+    console.log(err)
+    return err
+  })
+
+  const exec = async () => {
+    let res = await get_quote_table_list()
+    console.log(res)
+  }
+  exec()
+</script>

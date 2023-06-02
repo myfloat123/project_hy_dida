@@ -57,6 +57,7 @@ const add_field = (data) => http({
     'X-Forwarded-For': XFORWARDEDFOR
   }
 }).then((res) => {
+  // console.log(res)
   console.log(`新增字段"${data.name}"成功`)
   console.log('字段id:', res.data.result)
   console.log('\n')

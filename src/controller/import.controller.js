@@ -124,6 +124,9 @@ class ImportController {
             if (item2.whether_zh_CN == item[REQUIRED]) {
               data.fieldProperty.required = item2.whether
               data.fieldPropertyDTOList[0].value = item2.whether
+            } else {
+              data.fieldProperty.required = 'false'
+              data.fieldPropertyDTOList[0].value = 'false'
             }
             if (item2.whether_zh_CN == item[UNIQUE]) {
               data.fieldProperty.unique = item2.whether
@@ -151,6 +154,7 @@ class ImportController {
             }
           })
           // console.log(dictionary_code_arr)
+          // console.log(data_dictionary.items)
 
           let dictionary_name_arr = []
           let { name } = data_dictionary
@@ -210,7 +214,9 @@ class ImportController {
           } else {
             // 字典不存在则创建字典，并关联字典
             console.log("执行创建字典")
+            console.log(data_dictionary)
             let res2 = await create_dictionary(data_dictionary)
+
             dictId = res2.data.result
             data.dicDto.id = dictId
 
@@ -241,6 +247,9 @@ class ImportController {
             if (item2.whether_zh_CN == item[REQUIRED]) {
               data.fieldProperty.required = item2.whether
               data.fieldPropertyDTOList[0].value = item2.whether
+            } else {
+              data.fieldProperty.required = 'false'
+              data.fieldPropertyDTOList[0].value = 'false'
             }
             if (item2.whether_zh_CN == item[UNIQUE]) {
               data.fieldProperty.unique = item2.whether
@@ -271,7 +280,7 @@ class ImportController {
             data.referenceConfig.refDisplayFieldCode = item[SHOWFIELDCODE]
             data.referenceConfig.refDisplayFieldId = res.find(item6 => item6.code == item[SHOWFIELDCODE]).id
             data.referenceConfig.refTableId = quote_table.id + ''
-            data.fieldPropertyDTOList[0].value = item[REQUIRED]
+            item[REQUIRED] ? data.fieldPropertyDTOList[0].value = item[REQUIRED] : data.fieldPropertyDTOList[0].value = 'false'
             data.fieldPropertyDTOList[1].value = item[UNIQUE]
 
             // 添加“引用”类型字段
@@ -289,7 +298,7 @@ class ImportController {
           let data = data_normal
           data.name = item[FIELDNAME]
           data.code = item[FIELDCODE]
-          data.fieldSize = item[FIELDLENGTH] - 0
+
           data.tableId = TABLEID
 
           fieldTypeList.forEach((item1) => {
@@ -297,11 +306,15 @@ class ImportController {
               data.fieldType = item1.fieldType
             }
           })
+          data.fieldSize = (data.fieldType == 'DATE' || data.fieldType == 'DATE_TIME') ? 0 : (item[FIELDLENGTH] - 0)
 
           whetherList.forEach((item2) => {
             if (item2.whether_zh_CN == item[REQUIRED]) {
               data.fieldProperty.required = item2.whether
               data.fieldPropertyDTOList[0].value = item2.whether
+            } else {
+              data.fieldProperty.required = 'false'
+              data.fieldPropertyDTOList[0].value = 'false'
             }
             if (item2.whether_zh_CN == item[UNIQUE]) {
               data.fieldProperty.unique = item2.whether

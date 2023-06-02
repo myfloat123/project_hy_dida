@@ -1,0 +1,40 @@
+{
+  "dataType": "NORMAL",
+  "fieldType": "DATE",
+  "name": "售后结束时间",
+  "code": "after_sale_end_time",
+  "fieldProperty": {
+    "required": "false",
+    "unique": "false",
+    "pinyinConvent": "false",
+    "regular": "",
+    "defaults": null
+  },
+  "tags": null,
+  "fieldSize": 0,
+  "decimalSize": null,
+  "species": "BIS",
+  "tableId": "1664296984988758016",
+  "fieldPropertyDTOList": [
+    {
+      "value": "false",
+      "code": "required"
+    },
+    {
+      "value": "false",
+      "code": "unique"
+    },
+    {
+      "value": "false",
+      "code": "pinyinConvent"
+    },
+    {
+      "value": "",
+      "code": "regular"
+    },
+    {
+      "value": null,
+      "code": "defaults"
+    }
+  ]
+}
