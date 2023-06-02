@@ -25,8 +25,17 @@ const get_one_dictionary = (name) => http({
   console.log(err)
 })
 
-// get_one_dictionary('政治面貌').then(res => {
+// get_one_dictionary('任务(潜客)(商机)状态').then(res => {
 //   console.log(res)
+//   let dictionary_name_arr = res.data.map((item) => {
+//     return {
+//       id: item.id,
+//       name: item.name,
+//       code: item.code,
+//     }
+//   })
+//   console.log(dictionary_name_arr)
+//   console.log(dictionary_name_arr[0])
 // })
 
 module.exports = {

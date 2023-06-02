@@ -1,0 +1,12 @@
+{
+  "name": "面试评估项目表1",
+  "code": "interview_assessment_item_1",
+  "type": "AUX_TABLE",
+  "moduleId": "1636566178069622784",
+  "description": "",
+  "auxTable": {
+    "mainTableCode": "interview_assessment",
+    "relationType": "ONE_TO_ONE"
+  },
+  "species": "BIS"
+}

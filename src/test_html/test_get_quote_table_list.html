@@ -24,7 +24,7 @@
     url: `/hy-paas/paas/hy/20014/data/v2/tables/list?excludeTableTypes=DICT`,
     method: 'get',
     headers: {
-      Authorization: 'Bearer ' + 'paas.sys.4.94bf3e88-5886-4d60-9508-9da41a590b00'
+      Authorization: 'Bearer ' + 'paas.sys.4.eb81832f-73c6-4897-bbcf-bc437d30e62c'
     }
   }).then(res => {
     if (res.data.code === '00000') {
@@ -43,7 +43,18 @@
 
   const exec = async () => {
     let res = await get_quote_table_list()
-    console.log(res)
+    // console.log(res)
+    let quote_table = {}
+    // 获取关联引用表信息
+    let is_quote_table = res.some(item4 => {
+      if (item4.code == 'hr_member') {
+        quote_table = item4
+        return true
+      }
+    })
+    console.log(is_quote_table)
+    console.log(quote_table)
+
   }
   exec()
 </script>

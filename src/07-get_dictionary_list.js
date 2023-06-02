@@ -23,16 +23,16 @@ const get_dictionary_list = () => http({
   console.log(err)
 })
 
-// get_dictionary_list().then(res => {
-//   // console.log(res.data)
-//   console.log(res.data.map(item => {
-//     return {
-//       id: item.id,
-//       name: item.name,
-//       code: item.code
-//     }
-//   }))
-// })
+get_dictionary_list().then(res => {
+  // console.log(res.data)
+  console.log(res.data.map(item => {
+    return {
+      id: item.id,
+      name: item.name,
+      code: item.code
+    }
+  }))
+})
 
 
 module.exports = {

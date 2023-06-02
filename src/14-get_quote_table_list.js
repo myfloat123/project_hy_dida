@@ -26,7 +26,17 @@ const get_quote_table_list = () => http({
 
 // const exec = async () => {
 //   let res = await get_quote_table_list()
-//   console.log(res)
+//   // console.log(res)
+//   let quote_table = {}
+//   // 获取关联引用表信息
+//   let is_quote_table = res.some(item4 => {
+//     if (item4.code == 'hr_member') {
+//       quote_table = item4
+//       return true
+//     }
+//   })
+//   console.log(is_quote_table)
+//   console.log(quote_table)
 // }
 
 // exec()

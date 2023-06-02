@@ -18,7 +18,9 @@ const {
   TABLECODE,
   REFTABLECODE,
   REFFIELDCODE,
-  SHOWFIELDCODE
+  SHOWFIELDCODE,
+  DECIMALDIGITS,
+  AUXTABLETYPE
 } = require('../config/config.default')
 const { create_dictionary, data_dictionary } = require('../06-create_dictionary')
 // const { get_dictionary_list } = require('../07-get_dictionary_list')
@@ -83,17 +85,36 @@ class ImportController {
     let dictTypeNameObj = dataList.find(item => item[FIELDNAME] == DICTTYPENAME)
     // 查找json类型表格内容中“字典值”字段
     let dictValue = dataList.find(item => item[FIELDLENGTH] == DICTVALUE)
+    // 查询json类型表格内容中“附属表类型”字段
+    let auxTableTypeObj = dataList.find(item => item[FIELDLENGTH] == AUXTABLETYPE)
     // 定义字段数组和字典数组
     let fieldArr = []
     let dictionaryArr = []
+    let tableArr = []
+    let fieldIndexEnd
+    let dictionaryIndexStart
+    let dictionaryIndexEnd
     // 如果查找到“字典类型名称”和“字典值”这两个字段，则通过这两个字段分割出“字段数组”和“字典数组”
-    if (dictTypeNameObj && dictValue) {
-      let fieldIndexEnd = dataList.findIndex(item => item[FIELDNAME] == DICTTYPENAME)
+    if (dictTypeNameObj && dictValue && auxTableTypeObj) {
+      fieldIndexEnd = dataList.findIndex(item => item[FIELDNAME] == DICTTYPENAME)
 
-      let dictionaryIndexStart = dataList.findIndex(item => item[FIELDLENGTH] == DICTVALUE)
+      dictionaryIndexStart = dataList.findIndex(item => item[FIELDLENGTH] == DICTVALUE)
+
+      dictionaryIndexEnd = dataList.findIndex(item => item[FIELDLENGTH] == AUXTABLETYPE)
+
+      fieldArr = dataList.slice(0, fieldIndexEnd)
+      dictionaryArr = dataList.slice(dictionaryIndexStart + 1, dictionaryIndexEnd)
+      tableArr = dataList.slice(dictionaryIndexEnd + 1)
+    } else if (dictTypeNameObj && dictValue) {
+      fieldIndexEnd = dataList.findIndex(item => item[FIELDNAME] == DICTTYPENAME)
+
+      dictionaryIndexStart = dataList.findIndex(item => item[FIELDLENGTH] == DICTVALUE)
 
       fieldArr = dataList.slice(0, fieldIndexEnd)
       dictionaryArr = dataList.slice(dictionaryIndexStart + 1)
+    } else if (auxTableTypeObj) {
+      fieldIndexEnd = dataList.findIndex(item => item[FIELDLENGTH] == AUXTABLETYPE)
+      tableArr = dataList.slice(fieldIndexEnd + 1)
     } else {
       fieldArr = dataList
     }
@@ -134,17 +155,22 @@ class ImportController {
             }
           })
 
-          data_dictionary.name = item[FIELDNAME]
           data_dictionary.code = item[DICTSOURCE]
+          console.log(data_dictionary.code)
+          // console.log(dictionaryArr)
+          let dictName = dictionaryArr.find(item5 => item5[TABLECODE] == data_dictionary.code)[FIELDNAME]
+          data_dictionary.name = dictName
 
           data_dictionary.items = []
           let dictionary_code_arr = []
+          // console.log(dictionaryArr)
           dictionaryArr.forEach((item3, i) => {
             if (!dictionary_code_arr.includes(item3[TABLECODE])) {
               dictionary_code_arr.push(item3[TABLECODE])
             }
 
-            if (item3[FIELDNAME] == data_dictionary.name) {
+            // console.log(item3)
+            if (item3[TABLECODE] == data_dictionary.code) {
               data_dictionary.items.push({
                 code: item3[FIELDLENGTH],
                 name: item3[FIELDTYPE],
@@ -153,8 +179,9 @@ class ImportController {
               })
             }
           })
+
           // console.log(dictionary_code_arr)
-          // console.log(data_dictionary.items)
+          // console.log(data_dictionary)
 
           let dictionary_name_arr = []
           let { name } = data_dictionary
@@ -176,43 +203,33 @@ class ImportController {
 
           // 获取符合条件的某个字典
           let res = await get_one_dictionary(nameStr)
-          // console.log(res)
-          dictionary_name_arr = res.data.map((item) => {
-            return {
-              id: item.id,
-              name: item.name,
-              code: item.code,
-            }
-          })
-
-          // console.log(dictionary_name_arr)
+          console.log(res.data)
+          let is_dictionary
           let dictId
-          let is_dictionary = dictionary_name_arr.some((item, i) => {
-            // console.log(reg)
-            // console.log(item.name)
-            // console.log(reg.test(item.name))
-            if (reg.test(item.name)) {
-              console.log("执行关联字典")
-              dictId = item.id
+          if (res.data.length > 0) {
+            dictionary_name_arr = res.data.map((item) => {
+              return {
+                id: item.id,
+                name: item.name,
+                code: item.code,
+              }
+            })
+
+            // console.log(dictionary_name_arr)
+
+            is_dictionary = dictionary_name_arr.some((item, i) => {
+              // console.log(reg)
               // console.log(item.name)
-              // console.log(dictId)
-              return true
-            }
-          })
-          // console.log("is_dictionary", is_dictionary)
-          // 字典已存在则关联字典
-          if (is_dictionary) {
-            const res1 = await relevance_dictionary(dictId)
-            data.dicValues = res1.data.result.items
-            data.dictionaryForeign.refTableCode = res1.data.result.code
-            data.dicDto.id = dictId
-            data.dicDto.name = res1.data.result.name
-            data.dicDto.code = res1.data.result.code
-            console.log("字典名称", data.dicDto.name)
-            await add_field(data)
-            // console.log(data)
+              // console.log(reg.test(item.name))
+              if (reg.test(item.name)) {
+                console.log("执行关联字典")
+                dictId = item.id
+                // console.log(item.name)
+                // console.log(dictId)
+                return true
+              }
+            })
           } else {
-            // 字典不存在则创建字典，并关联字典
             console.log("执行创建字典")
             console.log(data_dictionary)
             let res2 = await create_dictionary(data_dictionary)
@@ -228,6 +245,37 @@ class ImportController {
             await add_field(data)
             console.log(data_dictionary)
           }
+          // console.log("is_dictionary", is_dictionary)
+          // 字典已存在则关联字典
+          if (is_dictionary) {
+            const res1 = await relevance_dictionary(dictId)
+            data.dicValues = res1.data.result.items
+            data.dictionaryForeign.refTableCode = res1.data.result.code
+            data.dicDto.id = dictId
+            data.dicDto.name = res1.data.result.name
+            data.dicDto.code = res1.data.result.code
+            console.log("字典名称", data.dicDto.name)
+            await add_field(data)
+            console.log(data)
+          }
+          // else {
+          //   // 字典不存在则创建字典，并关联字典
+          //   console.log("执行创建字典")
+          //   console.log(data_dictionary)
+          //   let res2 = await create_dictionary(data_dictionary)
+          //   // console.log(res2)
+
+          //   dictId = res2.data.result
+          //   data.dicDto.id = dictId
+
+          //   let res3 = await relevance_dictionary(dictId)
+          //   data.dicValues = res3.data.result.items
+          //   data.dictionaryForeign.refTableCode = res3.data.result.code
+          //   data.dicDto.name = res3.data.result.name
+          //   // 添加“字典”类型字段
+          //   await add_field(data)
+          //   console.log(data_dictionary)
+          // }
         } else if (item[REFTABLECODE] != "" && item[REFTABLECODE] != undefined) {
           // 添加数据类型为“引用”的字段
           // 处理引用字段参数
@@ -308,6 +356,12 @@ class ImportController {
           })
           data.fieldSize = (data.fieldType == 'DATE' || data.fieldType == 'DATE_TIME') ? 0 : (item[FIELDLENGTH] - 0)
 
+          if (data.fieldType == 'INT') {
+            data.decimalSize = item[DECIMALDIGITS] - 0
+          } else {
+            data.decimalSize = null
+          }
+
           whetherList.forEach((item2) => {
             if (item2.whether_zh_CN == item[REQUIRED]) {
               data.fieldProperty.required = item2.whether
@@ -339,7 +393,8 @@ class ImportController {
       result: {
         dataList,
         fieldArr,
-        dictionaryArr
+        dictionaryArr,
+        tableArr
       }
     }
   }
