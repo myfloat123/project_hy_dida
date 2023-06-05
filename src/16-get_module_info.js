@@ -37,9 +37,9 @@ const get_module_info = (moduleName = MODULENAME) => http({
   console.log(err)
 })
 
-// get_module_info('测试')
+get_module_info('测试')
 // get_module_info('中介配置考核')
-get_module_info('潜客管理')
+// get_module_info('潜客管理')
 
 module.exports = {
   get_module_info
