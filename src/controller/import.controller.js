@@ -268,24 +268,25 @@ class ImportController {
             await add_field(data)
             console.log(data)
           }
-          // else {
-          //   // 字典不存在则创建字典，并关联字典
-          //   console.log("执行创建字典")
-          //   console.log(data_dictionary)
-          //   let res2 = await create_dictionary(data_dictionary)
-          //   // console.log(res2)
+          else {
+            // 字典不存在则创建字典，并关联字典
+            console.log("执行创建字典")
+            console.log(data_dictionary)
+            let res2 = await create_dictionary(data_dictionary)
+            if (res2.code != 'A0430') {
+              dictId = res2.data.result
+              data.dicDto.id = dictId
 
-          //   dictId = res2.data.result
-          //   data.dicDto.id = dictId
-
-          //   let res3 = await relevance_dictionary(dictId)
-          //   data.dicValues = res3.data.result.items
-          //   data.dictionaryForeign.refTableCode = res3.data.result.code
-          //   data.dicDto.name = res3.data.result.name
-          //   // 添加“字典”类型字段
-          //   await add_field(data)
-          //   console.log(data_dictionary)
-          // }
+              let res3 = await relevance_dictionary(dictId)
+              data.dicValues = res3.data.result.items
+              data.dictionaryForeign.refTableCode = res3.data.result.code
+              data.dicDto.name = res3.data.result.name
+              // 添加“字典”类型字段
+              await add_field(data)
+              console.log(data_dictionary)
+            }
+            // console.log(res2)
+          }
         } else if (item[REFTABLECODE] != "" && item[REFTABLECODE] != undefined) {
           // 添加数据类型为“引用”的字段
           // 处理引用字段参数

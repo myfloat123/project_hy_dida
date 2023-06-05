@@ -23,7 +23,7 @@ const create_dictionary = (data_dictionary) => http({
     return res
   } else {
     console.log(res.data.msg)
-    return res.data.msg
+    return res.data
   }
 }).catch(err => {
   console.log(err)

@@ -34,7 +34,7 @@ const get_one_table = (tableName = '') => http({
   console.log(err)
 })
 
-get_one_table('面试评价表').then(res => {
+get_one_table('潜客信息表test4').then(res => {
   console.log(res)
 })
 
