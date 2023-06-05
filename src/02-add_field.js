@@ -58,9 +58,16 @@ const add_field = (data) => http({
   }
 }).then((res) => {
   // console.log(res)
-  console.log(`新增字段"${data.name}"成功`)
-  console.log('字段id:', res.data.result)
-  console.log('\n')
+  if (res.data.code == '00000') {
+    console.log(`新增字段"${data.name}"成功`)
+    console.log('字段id:', res.data.result)
+    console.log('\n')
+    return res.data.result
+  } else {
+    console.log(res.data)
+    return res.data
+  }
+
   // console.log(res.data)
 }).catch(err => {
   console.log(err)
