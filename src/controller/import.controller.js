@@ -195,9 +195,19 @@ class ImportController {
           // })
           // console.log(data)
           // let nameStr = nameArr_zh_CN.join("")
-          let nameStr = nameArr.join("")
+          let nameStr = nameArr.join('')
+          let nameStr1 = ''
+          if (nameArr.includes('(') || nameArr.includes(')')) {
+            nameStr1 = nameStr.replace(/\(/g, '\\(').replace(/\)/g, '\\)')
+            // console.log(nameStr1)
+          } else {
+            nameStr1 = nameStr
+          }
+
+
+
           // 动态创建匹配字典的正则表达式
-          let reg = new RegExp(nameStr + '$')
+          let reg = new RegExp(`${nameStr1}$`)
           // console.log(reg)
           // let res = await get_dictionary_list()
 
@@ -245,7 +255,7 @@ class ImportController {
             await add_field(data)
             console.log(data_dictionary)
           }
-          // console.log("is_dictionary", is_dictionary)
+          console.log("is_dictionary", is_dictionary)
           // 字典已存在则关联字典
           if (is_dictionary) {
             const res1 = await relevance_dictionary(dictId)

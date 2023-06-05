@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+  let pattern = `任务(潜客)(商机)状态` // 这是一个动态变化的模式
+  let escapedPattern = pattern.replace(/\(/g, '\\(').replace(/\)/g, '\\)')
+  console.log(escapedPattern)
+  // 这是对括号进行转义后的模式
+  let reg = new RegExp(escapedPattern) // 这是创建的正则对象
+  console.log(reg)
+  let str = `任务(潜客)(商机)状态`
+  console.log(reg.test(str)) // true
+
+</script>
