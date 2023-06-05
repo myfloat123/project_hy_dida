@@ -25,7 +25,7 @@ const get_one_dictionary = (name) => http({
   console.log(err)
 })
 
-// get_one_dictionary('任务(潜客)(商机)状态').then(res => {
+// get_one_dictionary('性别').then(res => {
 //   console.log(res)
 //   let dictionary_name_arr = res.data.map((item) => {
 //     return {
