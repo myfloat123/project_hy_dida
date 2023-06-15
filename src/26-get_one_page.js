@@ -14,7 +14,7 @@ const get_one_page = ({ type, name, pageIds }) => http({
 }).then(res => {
   // console.log(res.data)
   if (res.data.code === '00000') {
-    console.log(res.data.result.data)
+    // console.log(res.data.result.data)
     console.log('获取页面信息成功')
     return res.data.result.data.map(page => {
       return {
@@ -22,7 +22,7 @@ const get_one_page = ({ type, name, pageIds }) => http({
         name: page.name,
         type: page.type,
         pageCode: page.pageCode,
-        belongMenus: page.belongMenus[0]
+        belongMenus: page.belongMenus
       }
     })
 
@@ -35,8 +35,8 @@ const get_one_page = ({ type, name, pageIds }) => http({
 })
 
 get_one_page({
-  name: '',
-  pageIds: '1637007928395444224',
+  name: '学生信息录入页面',
+  pageIds: '',
   type: ''
 }).then(res => {
   console.log(res)
