@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <textarea name="" id="" cols="30" rows="10">
+    &lt;h1&gt;富文本框&lt;/h1&gt;
+  </textarea>
+
+  <iframe name="" id="iframe" style="width: 200px; height: 100px; border: 1px solid black;"></iframe>
+  <script>
+    var iframe = document.getElementById("iframe")
+    var doc = iframe.contentWindow.document
+    doc.open()
+    doc.write("<h1>框架元素</h1>")
+    doc.close();
+  </script>
+
+  <div name="" id="" contenteditable="true" style="width: 200px; height: 100px; border: 1px solid black;">
+    <p>可编辑div</p>
+  </div>
+
+
+</body>
+
+</html>

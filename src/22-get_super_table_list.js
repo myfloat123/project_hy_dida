@@ -1,8 +1,8 @@
 const http = require('../utils/http')
 const { ACCESS_TOKEN, LOGINNAME, OFFSET, SIZE, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
 
-const get_one_table = (tableName = '') => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v2/tables/list?offset=${OFFSET}&size=${SIZE}&name=${tableName}&excludeTableTypes=SUPER`,
+const get_super_table_list = (tableName = '') => http({
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v1/superTables/list?offset=${OFFSET}&size=${SIZE}&name=${tableName}`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,
@@ -12,15 +12,17 @@ const get_one_table = (tableName = '') => http({
 }).then(res => {
   // console.log(res.data)
   if (res.data.code === '00000') {
-    // console.log(res.data.result.data)
-    console.log('获取表信息成功')
+    // console.log(res.data.result.data.length)
+    console.log('获取超级表列表信息成功')
     let tableList = res.data.result.data.map(item => {
       return {
         id: item.id,
-        name: item.name,
-        code: item.code,
-        moduleId: item.moduleId,
+        appCode: item.appCode,
+        appName: item.appName,
+        tableId: item.tableId,
         moduleName: item.moduleName,
+        mappingTableName: item.mappingTableName,
+        mappingTableCode: item.mappingTableCode,
         type: item.type
       }
     })
@@ -34,10 +36,10 @@ const get_one_table = (tableName = '') => http({
   console.log(err)
 })
 
-get_one_table('车辆信息表1').then(res => {
+get_super_table_list().then(res => {
   console.log(res)
 })
 
 module.exports = {
-  get_one_table,
+  get_super_table_list,
 }

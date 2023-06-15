@@ -20,7 +20,7 @@ const delete_one_table = (tableId) => http({
   console.log(err)
 })
 
-delete_one_table('1664258513293160448')
+delete_one_table('1668860702821068800')
 
 module.exports = {
   delete_one_table

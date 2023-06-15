@@ -1,0 +1,89 @@
+{
+	"data": [
+		{
+			"contract_end_date": "2023-12-31",
+			"create_user_id": "1",
+			"last_update_time": "2023-06-07 19:22:34",
+			"sequence": "1",
+			"contract_code": "ht0001",
+			"create_user_name": "admin",
+			"create_time": "2023-06-07 19:22:34",
+			"hr_code": "QY1111",
+			"id": "1666405279312384001",
+			"last_update_user_id": "1",
+			"contract_start_date": "2023-03-02",
+			"last_update_user_name": "admin"
+		},
+		{
+			"contract_end_date": "2024-04-10",
+			"create_user_id": "1",
+			"last_update_time": "2023-06-07 19:23:08",
+			"sequence": "2",
+			"contract_code": "ht0002",
+			"create_user_name": "admin",
+			"create_time": "2023-06-07 19:23:08",
+			"hr_code": "QY2222",
+			"id": "1666405424456273921",
+			"last_update_user_id": "1",
+			"contract_start_date": "2023-04-05",
+			"last_update_user_name": "admin"
+		},
+		{
+			"contract_end_date": "2023-12-31",
+			"create_user_id": "1",
+			"last_update_time": "2023-06-07 19:23:48",
+			"sequence": "3",
+			"contract_code": "ht0003",
+			"create_user_name": "admin",
+			"create_time": "2023-06-07 19:23:48",
+			"hr_code": "QY3333",
+			"id": "1666405590986919937",
+			"last_update_user_id": "1",
+			"contract_start_date": "2023-02-01",
+			"last_update_user_name": "admin"
+		},
+		{
+			"contract_end_date": "2022-12-31",
+			"create_user_id": "1",
+			"last_update_time": "2023-06-07 19:24:27",
+			"sequence": "4",
+			"contract_code": "ht0001",
+			"create_user_name": "admin",
+			"create_time": "2023-06-07 19:24:27",
+			"hr_code": "QY1111",
+			"id": "1666405753449091073",
+			"last_update_user_id": "1",
+			"contract_start_date": "2022-03-09",
+			"last_update_user_name": "admin"
+		},
+		{
+			"contract_end_date": "2022-12-31",
+			"create_user_id": "1",
+			"last_update_time": "2023-06-07 19:25:01",
+			"sequence": "5",
+			"contract_code": "ht0002",
+			"create_user_name": "admin",
+			"create_time": "2023-06-07 19:25:01",
+			"hr_code": "QY2222",
+			"id": "1666405897045282817",
+			"last_update_user_id": "1",
+			"contract_start_date": "2022-04-01",
+			"last_update_user_name": "admin"
+		},
+		{
+			"contract_end_date": "2022-12-31",
+			"create_user_id": "1",
+			"last_update_time": "2023-06-07 19:25:35",
+			"sequence": "6",
+			"contract_code": "ht0003",
+			"create_user_name": "admin",
+			"create_time": "2023-06-07 19:25:35",
+			"hr_code": "QY3333",
+			"id": "1666406041606164481",
+			"last_update_user_id": "1",
+			"contract_start_date": "2022-02-01",
+			"last_update_user_name": "admin"
+		}
+	],
+	"totalCount": "6"
+}

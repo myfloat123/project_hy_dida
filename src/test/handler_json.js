@@ -1,0 +1,12 @@
+const fs = require('fs')
+const path = require('path')
+fs.readFile(path.join(__dirname, './stu_entry_page_data.json'), 'utf8', (err, dataStr) => {
+  if (err) return console.log('读取文件失败')
+  console.log('读取文件成功')
+  // console.log(dataStr)
+  let jsObj = JSON.parse(dataStr)
+  // console.log(jsObj)
+  // let jsonObj = JSON.stringify(jsObj, '', '\t')
+  // console.log(jsonObj)
+  fs.writeFileSync(path.join(__dirname, './stu_entry_page_data.json'), jsObj)
+})

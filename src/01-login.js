@@ -8,12 +8,14 @@ const login = () => http({
   url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/manage/v1/auth/login`,
   method: 'post',
   data: { loginName: LOGINNAME, password: PASSWORD, clientType: "4", clientName: "str" },
+  // "verCodeId": "e3cb8adec4484ae898e1d361b4cdec28"
   // data: { loginName: "20053", password: "OwP44+flxGIwJsYavo/ISQ==", clientType: "4", clientName: "str" }
 })
 let res
 
 const ex_login = async () => {
   res = await login()
+  // console.log(res)
 
   if (res.data.code === '00000') {
     console.log('登录成功')

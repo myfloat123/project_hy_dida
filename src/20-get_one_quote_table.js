@@ -34,7 +34,7 @@ const get_one_quote_table = (tableName = '') => http({
   console.log(err)
 })
 
-get_one_quote_table('面试评价表').then(res => {
+get_one_quote_table('车辆配置信息表').then(res => {
   console.log(res)
 })
 

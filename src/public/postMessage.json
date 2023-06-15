@@ -1,0 +1,57 @@
+{
+  "reqSchema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "_type": "OBJECT",
+    "type": "object",
+    "properties": {
+      "tokenId": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "TOKEN"
+      },
+      "pagename": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "页面名称",
+        "defaultValue": ""
+      },
+      "lesseeCode": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "租户"
+      },
+      "applicationCode": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "应用"
+      }
+    }
+  },
+  "resSchema": {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "_type": "OBJECT",
+    "type": "object",
+    "properties": {
+      "data": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "页面id"
+      },
+      "data2": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "状态"
+      },
+      "check_token": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "token是否有效"
+      },
+      "bus_data": {
+        "_type": "STRING",
+        "type": "string",
+        "title": "当前行数据"
+      }
+    }
+  }
+}

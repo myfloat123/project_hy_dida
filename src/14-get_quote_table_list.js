@@ -56,6 +56,12 @@ const get_quote_table_list = () => http({
 //   // console.log(quote_table_arr)
 // })
 
+// get_quote_table_list().then(res => {
+//   console.log(res)
+// }).catch(err => {
+//   console.log(err)
+// })
+
 module.exports = {
   get_quote_table_list,
 }

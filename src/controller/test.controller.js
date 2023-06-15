@@ -19,7 +19,8 @@ const {
 } = require('../config/config.default')
 class TestController {
   async test(ctx) {
-    console.log(ctx)
+    // console.log(ctx)
+    // console.log(ctx.request.body)
     ctx.body = {
       code: 0,
       message: '测试成功',

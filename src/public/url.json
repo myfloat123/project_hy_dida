@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "_type": "OBJECT",
+  "type": "object",
+  "properties": {
+    "tokenId": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "TOKEN"
+    },
+    "pagename": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "页面名称"
+    },
+    "lesseeCode": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "租户"
+    },
+    "applicationCode": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "应用"
+    },
+    "iframeKey": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "引入控件id"
+    },
+    "workbenchNum": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "工作台编码"
+    },
+    "account": {
+      "_type": "STRING",
+      "type": "string",
+      "title": "账号"
+    }
+  }
+}

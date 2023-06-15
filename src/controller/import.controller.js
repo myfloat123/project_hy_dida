@@ -1,7 +1,11 @@
+const fs = require('fs')
+const path = require('path')
 const xlsx = require('xlsx')
+const { getJsDateFromExcel } = require('excel-date-to-js')
 const data_normal = require('../public/data_normal.json')
 const data_quote = require('../public/data_quote.json')
 const data_dict = require('../public/data_dict.json')
+// let data_insert = require('../public/data_insert.json')
 // const data_pk = require('../public/data_pk.json')
 // const data_fk = require('../public/data_fk.json')
 const {
@@ -20,7 +24,11 @@ const {
   REFFIELDCODE,
   SHOWFIELDCODE,
   DECIMALDIGITS,
-  AUXTABLETYPE
+  AUXTABLETYPE,
+  HEAD1,
+  HEAD2,
+  HEAD3,
+  HEAD4
 } = require('../config/config.default')
 const { create_dictionary, data_dictionary } = require('../06-create_dictionary')
 // const { get_dictionary_list } = require('../07-get_dictionary_list')
@@ -29,6 +37,10 @@ const { relevance_dictionary } = require('../08-relevance_dictionary')
 const { get_quote_table_list } = require('../14-get_quote_table_list')
 const { relevance_quote_table } = require('../15-relevance_quote_table')
 const { add_field } = require('../02-add_field')
+
+const { insert_table_saas } = require('../test_api/07-insert_table_saas')
+const { insert_table } = require('../test_api/06-insert_table')
+const { get_super_table_list } = require('../22-get_super_table_list')
 
 class ImportController {
   async lead(ctx) {
@@ -318,6 +330,7 @@ class ImportController {
 
           // 获取引用表列表信息
           let res = await get_quote_table_list()
+          // console.log(res)
           let quote_table = {}
           // 获取关联引用表信息
           let is_quote_table = res.some(item4 => {
@@ -406,6 +419,61 @@ class ImportController {
         fieldArr,
         dictionaryArr,
         tableArr
+      }
+    }
+  }
+
+  async insert(ctx) {
+    const { file = '' } = ctx.request.files
+    // console.log(file)
+    if (file.filepath == undefined) {
+      ctx.body = {
+        code: -1,
+        message: '请上传文件',
+        result: ''
+      }
+      return
+    }
+    // 读取上传的xlsx文件为工作簿对象
+    const workbook = xlsx.read(file.filepath, { type: 'file' })
+
+    // 第一个表格名字
+    const sheetName = workbook.SheetNames[0]
+    // 第一个表格内容
+    const sheet = workbook.Sheets[sheetName]
+    // console.log(sheet)
+
+    // 将表格内容转化为json类型数据
+    const dataList = xlsx.utils.sheet_to_json(sheet)
+    // console.log(dataList)
+    dataList.forEach(async item => {
+      for (let key in item) {
+        if (key == '主键') {
+          delete item[key]
+        }
+      }
+      item[HEAD2] = getJsDateFromExcel(item[HEAD2]).toLocaleDateString()
+      item[HEAD3] = getJsDateFromExcel(item[HEAD3]).toLocaleDateString()
+      let data = {
+        contract_code: item[HEAD1],
+        contract_end_time: item[HEAD2],
+        contract_start_time: item[HEAD3],
+        hr_code: item[HEAD4]
+      }
+      // let data = data_insert
+      // console.log(data)
+      await insert_table(data)
+    })
+    // fs.writeFileSync(path.join(__dirname, '../public/dataList.json'), JSON.stringify(dataList, '', '\t'), function (err) {
+    //   if (err) return console.log('文件写入错误')
+    //   console.log('文件写入成功')
+    // })
+
+    ctx.body = {
+      code: 0,
+      message: '导入成功',
+      result: {
+        dataList
       }
     }
   }

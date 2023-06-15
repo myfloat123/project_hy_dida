@@ -25,9 +25,9 @@ const relevance_quote_table = (tableId) => http({
   console.log(err)
 })
 
-// relevance_quote_table().then(res => {
-//   console.log(res)
-// })
+relevance_quote_table('1418509898995609600').then(res => {
+  console.log(res)
+})
 
 module.exports = {
   relevance_quote_table,
