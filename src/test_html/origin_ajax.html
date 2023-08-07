@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  let xhr = new XMLHttpRequest()
+  let url = ''
+  let data = {}
+  let token = ''
+  if (location.host == 'gc2002.wboess.com') {
+    url = 'https://gc2002.wboess.com/hy-saas/hy/saas/hy/gcxsgl/api/1665906204905451520_list_1686275070273'
+    data = { "_page": { "from": 0, "size": 10 }, "_cond": [{ "field": "client_type", "method": "equ", "value": ["1"] }], "_condRel": "1", "_sort": [{ "field": "create_time", "order": "desc" }, { "field": "id", "order": "asc" }], "_needTotal": true, "_searchCondRel": null }
+    token = JSON.parse(localStorage.getItem('app/hy/gcsystem/userInfo')).token
+  } else {
+    url = 'http://192.168.13.11:7090/hy/saas/hy/gcxsgl/api/1665906204905451520_list_1686275070273'
+    data = { "_page": { "from": 0, "size": 10 }, "_cond": [], "_condRel": null, "_sort": [{ "field": "acquisition_time", "order": "desc" }], "_needTotal": true, "_searchCondRel": null, "picihao": "1686913311679041536" }
+    token = JSON.parse(localStorage.getItem('app/hy/gcxsgl/refreshTokenInfo')).access_token
+  }
+  xhr.open('post', url)
+  xhr.setRequestHeader('Content-Type', 'application/json')
+  xhr.setRequestHeader('Authorization', `Bearer ${token}`)
+  xhr.send(JSON.stringify(data))
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(JSON.parse(xhr.responseText).result.data)
+    }
+  }
+</script>

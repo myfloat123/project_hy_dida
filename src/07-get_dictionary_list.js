@@ -1,8 +1,8 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, OFFSET, SIZE, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, OFFSET, SIZE, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 
 const get_dictionary_list = () => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v1/dictionary/list?offset=${OFFSET}&size=${SIZE}`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v1/dictionary/list?offset=${OFFSET}&size=${SIZE}`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,

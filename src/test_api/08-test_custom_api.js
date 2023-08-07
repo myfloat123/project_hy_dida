@@ -1,12 +1,12 @@
-const { ACCESS_TOKEN, USERAGENT, XFORWARDEDFOR, DETAIL_API_CODE } = require('../config/config.default')
+const { ACCESS_TOKEN, USERAGENT, XFORWARDEDFOR, CUSTOM_API_CODE } = require('../config/config.default')
 const http = require('../../utils/http')
 
-const detail_table = (id, task_code) => http({
+const test_custom_api = (data) => http({
   // url: `/hy-saas/hy/saas/hy/20014/api/${DETAIL_API_CODE}`,
-  url: `http://192.168.13.11:7090/hy/saas/hy/gccjgl/api/${DETAIL_API_CODE}`,
+  url: `http://192.168.13.11:7090/hy/saas/hy/gcxsgl/api/${CUSTOM_API_CODE}`,
   method: 'post',
   // data: { "_page": { "size": 100, "from": 0 }, "id": id },
-  data: { "_page": { "size": 100, "from": 0 }, "task_code": task_code, "id": id },
+  data,
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,
     'User-Agent': USERAGENT,
@@ -26,8 +26,15 @@ const detail_table = (id, task_code) => http({
   console.log(err)
 })
 
-detail_table('', 'YYRW0021')
+let data = {
+  "zhujianjihe": "1669223960614539265,1669224628830081025,1673644322622279681",
+  "maximum_profit_margin": 0.2,
+  "standard_profit_margin": 0.1,
+  "minimum_profit_margin": 0
+}
+
+test_custom_api(data)
 
 module.exports = {
-  detail_table
+  test_custom_api
 }

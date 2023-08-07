@@ -1,8 +1,8 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 
 const get_module_list = () => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/page/v1/menus/list`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/page/v1/menus/list`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,

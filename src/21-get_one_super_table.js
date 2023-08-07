@@ -1,8 +1,8 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, OFFSET, SIZE, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, OFFSET, SIZE, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 
 const get_one_super_table = (tableName = '') => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v1/superTables/list?offset=${OFFSET}&size=${SIZE}&name=${tableName}`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v1/superTables/list?offset=${OFFSET}&size=${SIZE}&name=${tableName}`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,

@@ -1,10 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 
 const get_page_DSL = (pageID = '') => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/page/v1/pages/${pageID}`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(LOGINNAME) ? APPCODE : APPCODE1}/page/v1/pages/${pageID}`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,
@@ -26,7 +26,7 @@ const get_page_DSL = (pageID = '') => http({
   console.log(err)
 })
 
-get_page_DSL('1637007928395444224').then(res => {
+get_page_DSL('1686661117067276288').then(res => {
   // console.log(res)
   // console.log(res.pageContent)
   let pageDSL = res.pageContent

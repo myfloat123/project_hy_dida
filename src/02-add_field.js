@@ -2,7 +2,7 @@
 // let data_dict = require('./public/data_dict.json')
 // let data_quote = require('./public/data_quote.json')
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 // let data = {
 //   "dataType": "NORMAL",
 //   "fieldType": "STRING",
@@ -48,7 +48,7 @@ const _http = http
 
 
 const add_field = (data) => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v2/fields/`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v2/fields/`,
   method: 'post',
   data,
   headers: {

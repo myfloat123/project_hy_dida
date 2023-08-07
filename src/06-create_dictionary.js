@@ -1,11 +1,11 @@
 let data_dictionary = require('./public/data_dictionary.json')
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, DICTNAME, DICTCODE, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, DICTNAME, DICTCODE, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 data_dictionary.name = DICTNAME
 data_dictionary.code = DICTCODE
 
 const create_dictionary = (data_dictionary) => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v1/dictionary/`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v1/dictionary/`,
   method: 'post',
   data: data_dictionary,
   headers: {

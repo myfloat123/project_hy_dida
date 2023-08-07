@@ -1,9 +1,9 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, TABLEID, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, TABLEID, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 
 // 入参为tableId，若无入参则默认使用环境变量TABLEID
 const get_table_fields = (tableId) => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v2/tables/other/${tableId ? tableId : TABLEID}?handleType=field`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v2/tables/other/${tableId ? tableId : TABLEID}?handleType=field`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,

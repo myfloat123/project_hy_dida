@@ -28,6 +28,14 @@ class TestController {
     }
   }
 
+  async testPost(ctx) {
+    ctx.body = {
+      code: 0,
+      message: '测试提交数据成功',
+      result: ctx.request.body
+    }
+  }
+
   async testImport(ctx) {
     // console.log(ctx.request.headers)
     const { file = '' } = ctx.request.files

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  const login_saas = function () {
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('post', 'http://192.168.13.11:6060/login')
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8')
+    xhr.send({
+      "username": "admin",
+      "password": "n8+wekN7GQenwWyUBPVDnA==",
+      // "password": "IZR8Vk3Bcf/ygPOo0+3oSA==",
+      "pwd_encryption_type": 2,
+      "client_type": 4,
+      "lessee_code": "hy",
+      "app_code": "gcxsgl",
+      "client_id": "client_hy_web",
+      "client_secret": "hy123456",
+      "ignore_pwd_status": 1,
+      // "ver_code_Id": "a3561601beb44b2e94e1c03104317af1",
+      "ver_code_Id": '22931063bc0e4188a7fb792191604272'
+    })
+    xhr.onreadystatechange = function () {
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log(JSON.parse(xhr.responseText))
+        }
+      }
+    }
+  }
+
+  const search_org_codes = function () {
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('post', 'http://192.168.13.11:7090/hy/saas/hy/gcxsgl/api/bis_api_1689263853344')
+
+    xhr.setRequestHeader('Authorization', 'Bearer ' + 'hy.gcxsgl.4.e85a262f-5a41-4693-af93-b194599ff3d0')
+
+    xhr.send()
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log(JSON.parse(xhr.responseText))
+      }
+    }
+  }
+
+  login_saas()
+  search_org_codes()
+</script>

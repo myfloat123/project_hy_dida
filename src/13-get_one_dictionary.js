@@ -1,9 +1,9 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, TABLEID, USERAGENT, XFORWARDEDFOR, OFFSET, SIZE, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, TABLEID, USERAGENT, XFORWARDEDFOR, OFFSET, SIZE, APPCODE, APPCODE1 } = require('./config/config.default')
 
 // 入参为tableId，若无入参则默认使用环境变量TABLEID
 const get_one_dictionary = (name) => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v1/dictionary/list?offset=${OFFSET}&size=${SIZE}&name=${name}`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v1/dictionary/list?offset=${OFFSET}&size=${SIZE}&name=${name}`,
   method: 'get',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,

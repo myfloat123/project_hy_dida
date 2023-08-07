@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/axios/1.4.0/axios.min.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  let cookies = document.cookie
+  console.log(cookies)
+  let cookieArray = cookies.split(';')
+  let token = ''
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim()
+    if (cookie.indexOf('saas_tokenId=') === 0) {
+      token = cookie.substring('saas_tokenId='.length, cookie.length)
+      break
+    }
+  }
+  console.log(token)
+  axios({
+    url: 'http://192.168.13.11:7090/hy/saas/hy/gcxsgl/api/bis_api_1689263853344',
+    method: 'post',
+    // data: { "_page": { "size": 100, "from": 0 } },
+    headers: {
+      Authorization: 'Bearer ' + 'hy.gcxsgl.4.e85a262f-5a41-4693-af93-b194599ff3d0',
+
+    }
+  }).then(res => {
+    if (res.data.code == 'SA0000') {
+      console.log(res.data.result)
+      return res.data.result
+    } else {
+      console.log(res.data)
+      return res.data
+    }
+  }).catch(err => {
+    console.log(err)
+  })
+</script>

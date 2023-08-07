@@ -1,0 +1,29 @@
+[
+  {
+    "discount_amount": "0",
+    "discounted_unit_price": "65",
+    "project_status": null,
+    "discount_rate": "1",
+    "number": 1,
+    "remaining_project_number": "",
+    "umit_price": 65,
+    "work_order": null,
+    "whether_regular_project": "0",
+    "order_code": "",
+    "new_work_order": null,
+    "total_amount": "65",
+    "construction_required": "1",
+    "ceiling_price": 88,
+    "package_key_identification": null,
+    "material_type": "003",
+    "package_code": "",
+    "package_reduction_amount": "0",
+    "lowest_selling_price": 34,
+    "whether_package_item": 0,
+    "material_name": "XM000029",
+    "cost_price": 55,
+    "amount_receivable": "65",
+    "_type": "update",
+    "id": "1684468371564802049"
+  }
+]

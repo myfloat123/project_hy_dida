@@ -11,7 +11,7 @@ const unicode_to_chinese = (unicodeStr) => {
   return ch
 }
 
-unicode_to_chinese('\\u6211\\u559c\\u6b22\\u4f60')
+unicode_to_chinese('\\u4e00')
 
 module.exports = {
   unicode_to_chinese

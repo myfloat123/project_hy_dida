@@ -1,9 +1,9 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, FIELD_ID, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, FIELD_ID, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE, APPCODE1 } = require('./config/config.default')
 
 // 入参为fieldId，若无入参则默认使用环境变量FIELD_ID
 const delete_field = (fieldId) => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/data/v2/fields/${fieldId ? fieldId : FIELD_ID}`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/data/v2/fields/${fieldId ? fieldId : FIELD_ID}`,
   method: 'delete',
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,

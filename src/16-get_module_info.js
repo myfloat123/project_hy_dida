@@ -1,9 +1,9 @@
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, MODULENAME, APPCODE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, MODULENAME, APPCODE, APPCODE1 } = require('./config/config.default')
 
 // 入参为moduleName，若无入参则默认使用环境变量MODULENAME
 const get_module_info = (moduleName = MODULENAME) => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/page/v1/menus/list`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/page/v1/menus/list`,
   // url: `/paas/hy/asset/page/v1/menus/list`,
   method: 'get',
   headers: {
@@ -38,7 +38,7 @@ const get_module_info = (moduleName = MODULENAME) => http({
 })
 
 // get_module_info('销售任务')
-get_module_info('测试')
+get_module_info('商机管理')
 // get_module_info('潜客管理')
 
 module.exports = {

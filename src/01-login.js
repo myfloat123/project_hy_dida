@@ -49,4 +49,13 @@ ex_login()
 //   ex_login
 // }
 
+// switch (key) {
+//   case value:
+    
+//     break;
+
+//   default:
+//     break;
+// }
+
 

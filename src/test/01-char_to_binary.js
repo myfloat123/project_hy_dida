@@ -5,12 +5,18 @@
 // console.log(binary.padStart(8, '0')) // 输出：00110001
 
 const char_to_binary = (char = '') => {
-  const unicode = char.charCodeAt(0)
-  const binary = unicode.toString(2)
-  console.log(binary)
-  return binary
+  let binaryArr = []
+  for (let i = 0; i < char.length; i++) {
+    let unicode = char.charCodeAt(i)
+    // console.log(unicode)
+    binaryArr.push(unicode.toString(2))
+  }
+
+  console.log(binaryArr)
+  return binaryArr
 }
-char_to_binary('乘')
+let binaryArray = char_to_binary('预约业务描述')
+console.log(binaryArray.join(''))
 
 /*
 在上面的例子中，char 变量包含字符 'a'，charCodeAt(0) 方法可以获取字符 'a' 的 Unicode 编码，返回数值 97，然后我们使用 toString() 方法将这个数值转换为二进制字符串 "1100001"。

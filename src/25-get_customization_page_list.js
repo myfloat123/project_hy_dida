@@ -1,10 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 const http = require('../utils/http')
-const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE, OFFSET, SIZE } = require('./config/config.default')
+const { ACCESS_TOKEN, LOGINNAME, USERAGENT, XFORWARDEDFOR, APPCODE, OFFSET, SIZE, APPCODE1 } = require('./config/config.default')
 
 const get_customization_page_list = () => http({
-  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : LOGINNAME}/page/code/v1/search`,
+  url: `${isNaN(+LOGINNAME) ? '' : '/hy-paas'}/paas/hy/${isNaN(+LOGINNAME) ? APPCODE : APPCODE1}/page/code/v1/search`,
   method: 'post',
   data: { "offset": OFFSET, "size": SIZE },
   headers: {

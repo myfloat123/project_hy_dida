@@ -8,13 +8,15 @@
 const chinese_to_unicode = (chineseStr) => {
   var u = ''
   for (var i = 0; i < chineseStr.length; i++) {
+    // console.log(chineseStr.charCodeAt(i)) // 转换为ASCII码
     u += '\\u' + chineseStr.charCodeAt(i).toString(16)
   }
   console.log(u)
   return u
 }
 
-chinese_to_unicode('我喜欢你')
+// chinese_to_unicode('A')
+chinese_to_unicode('一')
 
 module.exports = {
   chinese_to_unicode

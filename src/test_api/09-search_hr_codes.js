@@ -1,12 +1,11 @@
-const { ACCESS_TOKEN, USERAGENT, XFORWARDEDFOR, DETAIL_API_CODE } = require('../config/config.default')
+const { ACCESS_TOKEN, USERAGENT, XFORWARDEDFOR, CUSTOM_API_CODE } = require('../config/config.default')
 const http = require('../../utils/http')
 
-const detail_table = (id, task_code) => http({
+const search_hr_codes = () => http({
   // url: `/hy-saas/hy/saas/hy/20014/api/${DETAIL_API_CODE}`,
-  url: `http://192.168.13.11:7090/hy/saas/hy/gccjgl/api/${DETAIL_API_CODE}`,
+  url: `http://192.168.13.11:7090/hy/saas/hy/gcxsgl/api/bis_api_1689263853344`,
   method: 'post',
-  // data: { "_page": { "size": 100, "from": 0 }, "id": id },
-  data: { "_page": { "size": 100, "from": 0 }, "task_code": task_code, "id": id },
+  data: { "_page": { "size": 100, "from": 0 } },
   headers: {
     Authorization: 'Bearer ' + ACCESS_TOKEN,
     'User-Agent': USERAGENT,
@@ -26,8 +25,8 @@ const detail_table = (id, task_code) => http({
   console.log(err)
 })
 
-detail_table('', 'YYRW0021')
+search_hr_codes()
 
 module.exports = {
-  detail_table
+  search_hr_codes
 }

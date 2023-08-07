@@ -10,7 +10,7 @@ const number_to_binary = (number) => {
   return binary
 }
 
-number_to_binary(1)
+number_to_binary(123)
 
 module.exports = {
   number_to_binary

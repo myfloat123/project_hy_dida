@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table border="1" width="300" height="200">
+    <caption><strong>学生信息</strong></caption>
+    <thead>
+      <tr id="header">
+        <th><input type="checkbox"></th>
+        <th>班级</th>
+        <th>姓名</th>
+      </tr>
+    </thead>
+    <tbody style="text-align: center;">
+      <tr id="one" class="row-tr">
+        <td><input type="checkbox"></td>
+        <td>一班</td>
+        <td>小明</td>
+      </tr>
+      <tr id="two" class="row-tr">
+        <td><input type="checkbox"></td>
+        <td>二班</td>
+        <td>小红</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
+
+<script>
+  const rows = document.querySelectorAll('.row-tr')
+  console.log(rows[0])
+  const one = document.querySelector('#one')
+  const checkboxEle = one.children[0]
+  // console.log(checkboxEle);
+  checkboxEle.addEventListener('change', function () {
+    console.log(one.checked)
+    console.log(checkboxEle.children[0].checked)
+  })
+</script>
